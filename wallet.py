@@ -9,7 +9,7 @@ node="67.241.245.218:8080/"
 us=raw_input("input Rimcoin wallet address (put n if you don't have one) - ")
 if us=="n":
     cr=raw_input("enter desired wallet address")
-    os.system("sh -c '(curl "+node+"create*"+cr+" -s)>wallet'")
+    os.system("sh -c '(curl "+node+"create*"+cr+" -s)>"+cr+"_wallet.rim'")
     us=cr
 balance=subprocess.check_output(("curl "+node+"bal*"+us+" -s").split(" "))
 
@@ -53,7 +53,7 @@ balance         get balance of yourself or others
 help (COMMAND)  get help on a particular command""")
     elif cmd[0]=="send":
         try:
-            os.system("curl "+node+"send*"+us+"*"+cmd[1]+"*"+cmd[2]+"*$(cat wallet) -s >/dev/null")
+            os.system("curl "+node+"send*"+us+"*"+cmd[1]+"*"+cmd[2]+"*$(cat "+cr+"_wallet.rim) -s >/dev/null")
         except:
             print("usage:")
             print("send (OUTGOING ADDRESS) (AMOUNT")
