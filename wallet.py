@@ -5,7 +5,7 @@ import subprocess,os
 version = "0.0.5"
 
 print("""Rimcoin Wallet
-Version 0.0.5
+Version """+version+"""
 for custom nodes - default is genesis node. """)
 
 node="67.241.245.218:8080/"
